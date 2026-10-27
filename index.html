@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanban Board · Gestor de tareas</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">▦</div>
+    <div>
+      <h1>Kanban Board</h1>
+      <span id="summary" class="muted"></span>
+    </div>
+  </div>
+  <div class="tools">
+    <input id="search" type="search" placeholder="Buscar tareas…" aria-label="Buscar tareas">
+    <select id="filter" aria-label="Filtrar por prioridad">
+      <option value="">Todas las prioridades</option>
+      <option value="high">Alta</option>
+      <option value="medium">Media</option>
+      <option value="low">Baja</option>
+    </select>
+    <button id="theme" class="ghost" title="Cambiar tema" aria-label="Cambiar tema">🌓</button>
+    <button id="new" class="primary">+ Nueva tarea</button>
+  </div>
+</header>
+
+<main id="board" class="board"></main>
+
+<dialog id="dlg">
+  <form method="dialog" id="form">
+    <h2 id="dlg-title">Nueva tarea</h2>
+    <label>Título
+      <input id="f-title" required maxlength="80" autocomplete="off">
+    </label>
+    <label>Descripción
+      <textarea id="f-desc" rows="3" maxlength="400"></textarea>
+    </label>
+    <div class="row">
+      <label>Prioridad
+        <select id="f-prio">
+          <option value="low">Baja</option>
+          <option value="medium" selected>Media</option>
+          <option value="high">Alta</option>
+        </select>
+      </label>
+      <label>Fecha límite
+        <input id="f-due" type="date">
+      </label>
+    </div>
+    <label>Etiqueta
+      <input id="f-tag" maxlength="20" placeholder="Ej.: Diseño, Backend…">
+    </label>
+    <div class="actions">
+      <button type="button" id="delete" class="danger">Eliminar</button>
+      <span class="spacer"></span>
+      <button type="button" id="cancel" class="ghost">Cancelar</button>
+      <button type="submit" class="primary">Guardar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
